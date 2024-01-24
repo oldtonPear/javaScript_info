@@ -7,30 +7,30 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="row">
+    <div class="btn-group">
         <button id="btn1">1</button>
         <button id="btn2">2</button>
         <button id="btn3">3</button>
         <button id="btn+">+</button>
     </div>
 
-    <div class="row">
+    <div class="btn-group">
         <button id="btn4">4</button>
         <button id="btn5">5</button>
         <button id="btn6">6</button>
         <button id="btn-">-</button>
     </div>
     
-    <div class="row">
+    <div class="btn-group">
         <button id="btn7">7</button>
         <button id="btn8">8</button>
         <button id="btn9">9</button>
         <button id="btn*">*</button>
     </div>
     
-    <div class="row">
+    <div class="btn-group">
         <button id="btn0">0</button>
-        <button id="btn." class="btn">.</button>
+        <button id="btn.">.</button>
         <button id="btn/">/</button>
         <button id="btn=">=</button>
     </div>
@@ -38,14 +38,74 @@
     
 
     <script>
-        var n1, n2, operator, eventCounter;
-        eventCounter = 0;
+        var operator;
+        const numbers = [''];
         document.getElementById("btn1").addEventListener("click", myFunction);
         document.getElementById("btn2").addEventListener("click", myFunction);
+        document.getElementById("btn3").addEventListener("click", myFunction);
+        document.getElementById("btn4").addEventListener("click", myFunction);
+        document.getElementById("btn5").addEventListener("click", myFunction);
+        document.getElementById("btn6").addEventListener("click", myFunction);
+        document.getElementById("btn7").addEventListener("click", myFunction);
+        document.getElementById("btn8").addEventListener("click", myFunction);
+        document.getElementById("btn9").addEventListener("click", myFunction);
+        document.getElementById("btn+").addEventListener("click", myFunction);
+        document.getElementById("btn-").addEventListener("click", myFunction);
+        document.getElementById("btn*").addEventListener("click", myFunction);
+        document.getElementById("btn/").addEventListener("click", myFunction);
+        document.getElementById("btn.").addEventListener("click", myFunction);
+        document.getElementById("btn=").addEventListener("click", myFunction);
 
-        function myFunction() {
-            eventCounter++;
-           alert(document.getElementById("btn1"));
+
+        function myFunction(c) {
+            let character = c.currentTarget.innerHTML
+            if(character == '+' || character == '-' || character == '*' || character == '/'){
+                numbers.push(character);
+                numbers.push('');
+            }
+            
+            else if(character != '='){
+                numbers[numbers.length-1] = numbers[numbers.length-1] + character;
+            }
+            
+            else{
+                alert(numbers);
+                operate();
+            }
+            
+        }
+
+        function operate(){
+            let result = 0;
+            let prev, operator;
+            for (let index = 0; index < numbers.length; index++) {
+                if(numbers[index] == '+' || numbers[index] == '-' || numbers[index] == '*' || numbers[index] == '/'){
+
+                    operator = numbers[index];
+                    switch(operator){
+                        case '+':
+                            result = result + Number(numbers[index-1]);
+                            break;
+                        case '-':
+                            result = result - Number(numbers[index-1]);
+                            break;
+                        case '*':
+                            result = result * Number(numbers[index-1]);
+                            break;
+                        case '/':
+                            result = result / Number(numbers[index-1]);
+                            break;
+                    }
+                    
+                    operator = numbers[index];
+                }
+                else{
+                    prev = numbers[index];
+                }
+            }
+            //result = result + Number(numbers[numbers.length-1]);
+
+            alert(result);
         }
     </script>
 </body>
