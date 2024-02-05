@@ -5,6 +5,7 @@
   padding: 10px 24px;
   cursor: pointer;
   float: left; 
+  width: 80px;
 }
 
 /* Clear floats*/
