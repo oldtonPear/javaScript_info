@@ -1,45 +1,8 @@
 <!DOCTYPE html>
 
 <html lang="en">
+<link rel="stylesheet" href="style.css">
 
-<style>
-#zucLibrary{
-    color: rgb(0, 104, 22);
-    float: left;
-    margin-top: -5px;
-}
-#navBar{
-    font-size: small;
-    margin:15px;
-    float:right;
-    padding: 5px;
-    border: hidden;
-    border-radius: 5px;
-}
-#title{
-    margin: 25px;
-    float: left;
-}
-#content{
-    float: left;
-    margin-top: 0px;
-}
-#image{
-    margin: 30px;
-    padding: 5px;
-}
-#smallNavBar{
-    font-size: small;
-    margin:15px;
-    float:right;
-    padding: 5px;
-    border: 1px;
-    border-style: solid;
-    border-radius: 50px;
-    margin-top: 50px;
-}
-</style>
-    
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -55,7 +18,7 @@
             <h4>Zuc Library</h4>
         </div>
         <div class="col-sm-8">
-            <div id="navBar" style="background-color: rgb(0, 117, 63);">
+            <div id="navBar" style="background-color: rgb(0, 167, 89);">
                 Favorites(3)
             </div>
             <div id="navBar">
@@ -89,7 +52,7 @@
             <div id="smallNavBar">
                 A - Z 
             </div>
-            <div id="smallNavBar" style="background-color: rgb(0, 117, 63);">
+            <div id="smallNavBar" style="background-color: rgb(0, 167, 89);">
                 Default
             </div>
             <hr style="clear: both;">
@@ -97,17 +60,11 @@
         
         
         <div id="content">
-            <div class="row">
-                <div class="col-sm-4" id="image">
-                    <img src="immagini\pomodori.png" alt="Errore" width="150" height="150">
-                </div>
-                <div class="col-sm-4" id="image">
-                    <img src="immagini\zenzero.png" alt="Errore" width="150" height="150">
-                </div>
+            <div class="row" id="cose">
+                
             </div>
         </div>
-       
-
+        <script src="script.js"></script>
     </div>
 </body>
 </html>
