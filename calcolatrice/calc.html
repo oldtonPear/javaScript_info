@@ -59,53 +59,40 @@
 
         function myFunction(c) {
             let character = c.currentTarget.innerHTML
+            if(character == '='){
+                operate();
+                return;
+            }
             if(character == '+' || character == '-' || character == '*' || character == '/'){
                 numbers.push(character);
                 numbers.push('');
+                return;
             }
-            
-            else if(character != '='){
-                numbers[numbers.length-1] = numbers[numbers.length-1] + character;
-            }
-            
-            else{
-                alert(numbers);
-                operate();
-            }
-            
+            numbers[numbers.length-1] = numbers[numbers.length-1] + character;
         }
 
         function operate(){
-            let result = 0;
-            let prev, operator;
+            let result = 0, operator;
             for (let index = 0; index < numbers.length; index++) {
-                if(numbers[index] == '+' || numbers[index] == '-' || numbers[index] == '*' || numbers[index] == '/'){
-
+                if(index % 2 != 0){
                     operator = numbers[index];
                     switch(operator){
                         case '+':
-                            result = result + Number(numbers[index-1]);
+                            result = parseInt(numbers[index-1]) + parseInt(numbers[index+1]);
                             break;
                         case '-':
-                            result = result - Number(numbers[index-1]);
+                            result = parseInt(numbers[index-1]) - parseInt(numbers[index+1]);
                             break;
                         case '*':
-                            result = result * Number(numbers[index-1]);
+                            result = parseInt(numbers[index-1]) * parseInt(numbers[index+1]);
                             break;
                         case '/':
-                            result = result / Number(numbers[index-1]);
+                            result = parseInt(numbers[index-1]) / parseInt(numbers[index+1]);
                             break;
                     }
-                    
-                    operator = numbers[index];
-                }
-                else{
-                    prev = numbers[index];
                 }
             }
-            //result = result + Number(numbers[numbers.length-1]);
-
-            alert(result);
+            console.log(result)
         }
     </script>
 </body>
