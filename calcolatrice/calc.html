@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+    <div>
+        <h3>Benvenuto nella Calcolatrix 3000®</h3>
+    </div>
     <div class="btn-group">
         <button id="btn1">1</button>
         <button id="btn2">2</button>
@@ -72,27 +75,27 @@
         }
 
         function operate(){
-            let result = 0, operator;
-            for (let index = 0; index < numbers.length; index++) {
+            let result = numbers[0], operator;
+            for (let index = 1; index < numbers.length; index++) {
                 if(index % 2 != 0){
                     operator = numbers[index];
                     switch(operator){
                         case '+':
-                            result = parseInt(numbers[index-1]) + parseInt(numbers[index+1]);
+                            result = parseInt(result) + parseInt(numbers[index+1]);
                             break;
                         case '-':
-                            result = parseInt(numbers[index-1]) - parseInt(numbers[index+1]);
+                            result = parseInt(result) - parseInt(numbers[index+1]);
                             break;
                         case '*':
-                            result = parseInt(numbers[index-1]) * parseInt(numbers[index+1]);
+                            result = parseInt(result) * parseInt(numbers[index+1]);
                             break;
                         case '/':
-                            result = parseInt(numbers[index-1]) / parseInt(numbers[index+1]);
+                            result = parseInt(result) / parseInt(numbers[index+1]);
                             break;
                     }
                 }
             }
-            console.log(result)
+            alert(result)
         }
     </script>
 </body>

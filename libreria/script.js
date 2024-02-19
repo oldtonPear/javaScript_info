@@ -27,6 +27,7 @@ function addLibro(libro){
     + '<b style="font-size: smaller">' + libro.title + '</b>' + '<br>' 
     + '<div style="color: rgb(0, 167, 89); font-size: x-small">' + libro.name + '</div>' + '</div>'
 }
+
 function getData(tema){
     const request = new XMLHttpRequest();
     request.open("GET", "https://openlibrary.org/subjects/"+tema+".json?details=true", false); // `false` makes the request synchronous
