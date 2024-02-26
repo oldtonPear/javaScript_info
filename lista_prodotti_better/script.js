@@ -6,17 +6,11 @@ function showProducts() {
         s += '<div>'+ prodotto.codice + ' ' + prodotto.nome
         + ' ' + prodotto.descrizione + ' ' + prodotto.prezzo + '</div>'
     });
-    document.getElementById('product-list').innerHTML = s
+    document.getElementById('modal-content').innerHTML = s
 }
 
-function addProduct() {
-    prodotti.push(
-        product = {
-        codice: prompt("Inserisci il codice:"),
-        nome: prompt("Inserisci il nome:"),
-        descrizione: prompt("Inserisci la descrizione:"),
-        prezzo: prompt("Inserisci il prezzo:")
-      });
+function addProduct(product) {
+    prodotti.push(product)
       showProducts();
 }
 
@@ -45,3 +39,23 @@ function sortProducts() {
       
     showProducts();
 }
+
+function validateMyForm(){
+    const form = document.querySelector('#myForm');
+
+    var radioButtonGroup = document.getElementsByName("sconto");
+    var radiob = Array.from(radioButtonGroup).find(
+        (radio) => radio.checked
+     );
+    
+    product = {
+        categoria: form.querySelector('#categoria').value,
+        codice: form.querySelector('#codice').value,
+        nome: form.querySelector('#nome').value,
+        descrizione: form.querySelector('#descrizione').value,
+        prezzo: form.querySelector('#prezzo').value,
+        sconto: radiob.value,
+        inMagazzino: form.querySelector('#inMagazzino').checked
+    };
+    addProduct(product)
+  }
