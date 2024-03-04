@@ -40,6 +40,9 @@ function editProduct(pos){
     form.querySelector('#descrizione').value = prodotto.descrizione;
     form.querySelector('#prezzo').value = prodotto.prezzo;
     form.querySelector('#inMagazzino').checked = prodotto.inMagazzino;
+    let buttons = prodotto.sconto;
+    console.log(buttons)
+    form.querySelector('#'+ buttons + '%').checked = true;
 }
 
 function sortProducts() {
