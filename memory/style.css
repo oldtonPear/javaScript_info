@@ -1,0 +1,9 @@
+.center {
+    margin: auto;
+    font-size:xx-large;
+    text-align: center;
+}
+.cards{
+  width: 10%;
+  height: auto;
+}
