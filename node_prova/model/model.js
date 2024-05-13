@@ -27,7 +27,20 @@ function findByBandName(bandName){
         });
     })
 }
+function addVinyl(name, band){
+  vinyls.push({name: name, band:band})
+}
+
+function removeVinyl(name, band){
+    vinyls.forEach(element => {
+        if(element.name === name && element.band === band){
+            vinyls.slice(vinyls.findIndex(), vinyls.findIndex())
+        }
+    });
+}
 module.exports = {
     findAll,
-    findByBandName
+    findByBandName,
+    addVinyl,
+    removeVinyl
 }

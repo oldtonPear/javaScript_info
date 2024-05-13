@@ -11,10 +11,13 @@
     }
     #content{
         text-align: center;
-        border: 100px;
+        width: 70%;
+        margin-left: 15%;
     }
     #vinylElement{
         border: black;
+        border: thin solid;
+        padding: 5px;
     }
     .buttons{
         text-align: center;
@@ -45,32 +48,52 @@
                 return response.json()
             })
             .then(response => {
-                document.getElementById("content").innerHTML = '';
+                document.getElementById("content").innerHTML = '<br>';
                 let vinylList = document.getElementById("content");
                 response.forEach(element => {
-                    vinylList.innerHTML += `<div id="vinylElement"> ${element.band} ${element.name} </div>`;
+                    vinylList.innerHTML += `<div id="vinylElement"> ${element.band} <br> ${element.name} </div>`;
                 });
             })
         }
 
         async function addVinyl(){
-            document.getElementById("content").innerHTML = 
+            document.getElementById("content").innerHTML = '<h3>ADD VINYL</h3><br>'+
             '<form>' +
                 '<label for="name">NAME</label>' + '<br>' +
                 '<input type="text" id="name">' + '<br>' +
                 '<label for="band">BAND</label>' + '<br>' +
-                '<input type="text" id="band">' + '<br>' + 
-                '<input type="submit" onclick="eventListener(event)">'
+                '<input type="text" id="band">' + '<br><br>' + 
+                '<input type="submit" onclick="eventListenerAdd(event)">'
             '</form>';
             
         }
 
         async function removeVinyl(){
-            document.getElementById("content").innerHTML = '';
+            document.getElementById("content").innerHTML = '<h3>REMOVE VINYL</h3><br>'+
+            '<form>' +
+                '<label for="name">NAME</label>' + '<br>' +
+                '<input type="text" id="name">' + '<br>' +
+                '<label for="band">BAND</label>' + '<br>' +
+                '<input type="text" id="band">' + '<br><br>' + 
+                '<input type="submit" onclick="eventListenerRemove(event)">'
+            '</form>';
         }
 
-        function eventListener(event){
+        function eventListenerAdd(event){
             event.preventDefault()
+            
+            fetch("http://192.168.1.204:5000/vinylAPI/vinyl/" + document.getElementById("name").value + "/" + document.getElementById("band").value, {method: "PUT"})
+            .then(response => {
+                return response.json()
+            })
+        }
+
+        function eventListenerRemove(event){
+            event.preventDefault()
+            fetch("http://192.168.1.204:5000/vinylAPI/vinyl/" + document.getElementById("name").value + "/" + document.getElementById("band").value, {method: "DELETE"})
+            .then(response => {
+                return response.json()
+            })
         }
 
     </script>

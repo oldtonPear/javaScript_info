@@ -5,6 +5,12 @@ async function getVinyl(req, res){
     res.writeHead(200, { 'Content-Type': 'application/json' })
     res.end(JSON.stringify(vinyls))
 }
+async function addVinyl(req, res, name, band){
+    
+    model.addVinyl(name, band)
+    res.end("OK!")
+}
 module.exports = {
-    getVinyl
+    getVinyl,
+    addVinyl
 }
