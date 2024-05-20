@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="red">RED</label><br>
+        <input type="range" id="red" min="0" max="255">
+        <p>Value: <output id="redValue"></output></p>
+
+        <br>
+
+        <label for="blue">BLUE</label><br>
+        <input type="range" id="blue" min="0" max="255">
+        <p>Value: <output id="blueValue"></output></p>
+
+        <br>
+
+        <label for="green">GREEN</label><br>
+        <input type="range" id="green" min="0" max="255">
+        <p>Value: <output id="greenValue"></output></p>
+    </form>
+
+    <div id="result"></div>
+    <script src="script.js"></script>
+</body>
+</html>

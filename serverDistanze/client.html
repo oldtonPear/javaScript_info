@@ -40,7 +40,7 @@
 
           <input type="submit" onclick="actionListener(event)">
     </form>
-
+    <br>
     <div id="result"></div>
 
     <script>
@@ -49,13 +49,20 @@
         let firstCity = document.getElementById("city1").value;
         let secondCity = document.getElementById("city2").value;
         let passa_perVenezia = document.getElementById("checkBox").value;
-
-        fetch("http://192.168.4.23:5000/distanze")
+        if(firstCity === secondCity) document.getElementById("result").innerHTML = "NON PUOI SELEZIONARE LA STESSA CITTA";
+        else fetch("http://192.168.4.23:5000/distanze")
         .then(response => {
           return response.json()
         })
         .then(response => {
-          console.log(response)
+          response.forEach(element => {
+            if(element.città1 === firstCity && element.città2 === secondCity){
+              document.getElementById("result").innerHTML = element.distanza;
+            }
+            if(element.città2 === firstCity && element.città1 === secondCity){
+              document.getElementById("result").innerHTML = element.distanza;
+            }
+          });
         })
       }
     </script>
